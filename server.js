@@ -21,10 +21,10 @@ DbConnection()
 
 let PORT=process.env.PORT;
 let MODE=process.env.MODE
-console.log(process.env.MODE)
+// console.log(process.env.MODE)
 
 
-//auth Route
+//auth Route 
 app.use('/api/v1',authRoute)
 
 app.listen(PORT,()=>{

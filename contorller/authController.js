@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 //this is my controller for the registration
 export let registerController = async (req, res) => {
-    let { email, name, password, address, phone,answer } = req.body
+    let { email, name, password, address, phone,answer,role } = req.body
     try {
         if (!name) {
             return res.status(500).send({ message: "Name is required *" })
@@ -36,7 +36,8 @@ export let registerController = async (req, res) => {
             email,
             address,
             phone,
-            answer
+            answer,
+            role
         }).save()
         res.status(201).send({ message: "User is registered Successfully", success: true })
     }
@@ -106,7 +107,6 @@ export let restPasswordHandler=async(req,res)=>{
         return res.status(200).send({message:"Answer is required * "})
     }
       let findData= await usersModel.findOne({answer,email})
-      console.log("hello i reset data....",findData)
       if(!findData)
       {
         return res.status(200).send({message:"Either email or answer are incorrect *"})
